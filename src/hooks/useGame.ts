@@ -32,7 +32,7 @@ interface GameState {
   streak: number;
   reshuffleCount: number;
   round: number;
-  result: "win" | "lose" | null;
+  result: "win" | "lose" | "Tie" | null;
   affectedTiles: AffectedTile[];
   isRendering: boolean;
   gameOver: boolean;
@@ -149,6 +149,23 @@ export function useGame() {
       // calculate result
       const currentTotal = calcHandTotal(prev.currentHand, specialValues);
       const nextTotal = calcHandTotal(nextHand, specialValues);
+
+      if (nextTotal === currentTotal) {
+        return {
+          ...prev,
+          deck: finalDeck,
+          discard: finalDiscard,
+          currentHand: nextHand,
+          reshuffleCount,
+          round: prev.round + 1,
+          result: "Tie",
+          affectedTiles: [],
+          isRendering: true,
+          score: prev.score,
+          streak: 0,
+        };
+      }
+
       const won =
         direction === "higher"
           ? nextTotal > currentTotal

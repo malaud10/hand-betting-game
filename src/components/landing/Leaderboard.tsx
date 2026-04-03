@@ -1,11 +1,13 @@
+import { useState } from "react";
+
 interface LeaderboardEntry {
   score: number;
   date: string;
 }
 
 export default function Leaderboard() {
-  const scores: LeaderboardEntry[] = JSON.parse(
-    localStorage.getItem("leaderboard") || "[]",
+  const [scores] = useState<LeaderboardEntry[]>(() =>
+    JSON.parse(localStorage.getItem("leaderboard") || "[]"),
   );
 
   if (scores.length === 0)

@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router";
+import { Routes, Route, useNavigate, Navigate } from "react-router";
 import LandingPage from "./components/landing/LandingPage";
 import GameScreen from "./components/game/GameScreen";
 import { GameProvider } from "./context/GameContext.tsx";
@@ -8,7 +8,7 @@ import LeaderboardScreen from "./components/landing/LeaderboardScreen.tsx";
 import { useEffect } from "react";
 
 function AppContent() {
-  const { gameOver } = useGameContext();
+  const { gameOver, round } = useGameContext();
 
   const navigate = useNavigate();
 
@@ -20,9 +20,15 @@ function AppContent() {
     <div className="bg-game-bg min-h-dvh">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/game" element={<GameScreen />} />
+        <Route
+          path="/game"
+          element={round > 0 ? <GameScreen /> : <Navigate to="/" replace />}
+        />
         <Route path="/leaderboard" element={<LeaderboardScreen />} />
-        <Route path="/end" element={<EndScreen />} />
+        <Route
+          path="/end"
+          element={gameOver ? <EndScreen /> : <Navigate to="/" replace />}
+        />
       </Routes>
     </div>
   );
