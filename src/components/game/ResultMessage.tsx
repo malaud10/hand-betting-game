@@ -10,7 +10,7 @@ export default function ResultMessage() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!result) return;
+    if (!result || result === "Tie") return;
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setCurrentResult(result);
