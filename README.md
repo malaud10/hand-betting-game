@@ -10,7 +10,7 @@ How to play:-
 
 • Correct = +1 point
 
-• Honor tiles: win +1 value, lose −1
+• Special tiles: win +1 value, lose −1
 
 • Tile hits 0 or 10 → game ends
 
