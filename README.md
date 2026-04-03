@@ -44,6 +44,7 @@ How to play:-
 - Vite
 - Tailwind CSS v4
 - Framer Motion
+- React Router v7
 
 ## Project Structure
 
@@ -68,6 +69,7 @@ This project was built with AI assistance :
 - Boilerplate and utility functions (shuffle algorithm, deck creation)
 - Framer Motion animation syntax
 - Debugging and error fixing
+- Code refactoring suggestions
 
 **Written independently:**
 
